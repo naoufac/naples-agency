@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City44 — Multi-Agent Fleet Orchestration | naples.agency</title>
+  <meta name="description" content="Multi-agent fleet orchestration — 11 Hermes agents running parallel workflows across content, dev, and ops. Self-healing, autonomous, production-ready.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #f5f5f5; line-height: 1.6; }
+    a { color: #ff4d4d; text-decoration: none; transition: all 0.2s; }
+    a:hover { color: #ff6666; }
+    
+    nav { position: fixed; top: 0; left: 0; right: 0; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid #222; }
+    .logo { font-size: 20px; font-weight: 800; }
+    .logo span { color: #ff4d4d; }
+    
+    .hero { padding: 180px 40px 100px; max-width: 1400px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(48px, 6vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+    .hero p { font-size: 20px; color: #888; max-width: 700px; line-height: 1.7; margin-bottom: 40px; }
+    
+    .content { padding: 100px 40px; max-width: 1400px; margin: 0 auto; }
+    .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: #ff4d4d; margin-bottom: 60px; font-weight: 700; }
+    
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 80px; }
+    .stat-card { background: #141414; border: 1px solid #222; padding: 32px; border-radius: 12px; }
+    .stat-number { font-size: 48px; font-weight: 800; color: #ff4d4d; margin-bottom: 8px; }
+    .stat-label { font-size: 14px; color: #888; }
+    
+    .architecture { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .arch-box { background: #141414; border: 1px solid #222; padding: 40px; border-radius: 16px; }
+    .arch-box h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+    .arch-box ul { list-style: none; }
+    .arch-box li { color: #888; margin-bottom: 12px; padding-left: 24px; position: relative; }
+    .arch-box li::before { content: '→'; position: absolute; left: 0; color: #ff4d4d; }
+    
+    .back-link { display: inline-block; margin-top: 80px; color: #888; font-size: 14px; }
+    .back-link:hover { color: #f5f5f5; }
+    
+    @media (max-width: 1024px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .architecture { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 140px 24px 80px; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">naples<span>.agency</span></div>
+    <a href="../">← Back</a>
+  </nav>
+
+  <section class="hero">
+    <h1>City44</h1>
+    <p>Multi-agent fleet orchestration — 11 Hermes agents running parallel workflows across content, dev, and ops. Self-healing, autonomous, production-ready.</p>
+  </section>
+
+  <section class="content">
+    <div class="section-title">Fleet Overview</div>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">11</div>
+        <div class="stat-label">Autonomous Agents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Fleet Servers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Production Uptime</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Human Interventions</div>
+      </div>
+    </div>
+    
+    <div class="architecture">
+      <div class="arch-box">
+        <h3>Agent Capabilities</h3>
+        <ul>
+          <li>Real-time task distribution</li>
+          <li>Self-healing on failure</li>
+          <li>Parallel workflow execution</li>
+          <li>Automatic load balancing</li>
+          <li>Result synthesis</li>
+        </ul>
+      </div>
+      <div class="arch-box">
+        <h3>Infrastructure</h3>
+        <ul>
+          <li>Hermes CLI orchestration</li>
+          <li>Docker container isolation</li>
+          <li>Fleet-wide monitoring</li>
+          <li>Command dispatch system</li>
+          <li>Real-time log aggregation</li>
+        </ul>
+      </div>
+    </div>
+    
+    <a href="../" class="back-link">← Back to naples.agency</a>
+  </section>
+
+</body>
+</html>

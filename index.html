@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>naples.agency — where brands go live</title>
+  <meta name="description" content="Full-stack AI agency specializing in autonomous fleets, agent orchestration, and production-ready web experiences.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #f5f5f5; min-height: 100vh; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; transition: all 0.2s ease; }
+    
+    /* Navigation */
+    nav { position: 
+    fixed; top: 0; left: 0; right: 0; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid #222; }
+    .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 4px; }
+    .logo span { color: #ff4d4d; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 14px; color: #888; font-weight: 500; position: relative; }
+    .nav-links a:hover { color: #f5f5f5; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #ff4d4d; transition: width 0.2s; }
+    .nav-links a:hover::after { width: 100%; }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+    .menu-toggle span { width: 28px; height: 2px; background: #f5f5f5; transition: all 0.2s; }
+    
+    /* Hero Section */
+    .hero { padding: 180px 40px 100px; max-width: 1400px; margin: 0 auto; min-height: 100vh; display: flex; align-items: center; }
+    .hero-content { max-width: 800px; }
+    .hero h1 { font-size: clamp(56px, 8vw, 120px); font-weight: 800; line-height: 1.05; letter-spacing: -4px; margin-bottom: 32px; }
+    .hero h1 span { color: #ff4d4d; }
+    .hero p { font-size: clamp(18px, 2vw, 22px); color: #888; max-width: 600px; line-height: 1.7; margin-bottom: 48px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 12px; background: #ff4d4d; color: #fff; padding: 18px 40px; font-size: 16px; font-weight: 600; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(255, 77, 77, 0.3); }
+    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255, 77, 77, 0.4); }
+    
+    /* Stats Bar */
+    .stats { display: flex; gap: 60px; margin-top: 60px; padding-top: 40px; border-top: 1px solid #222; }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-number { font-size: 36px; font-weight: 800; color: #f5f5f5; }
+    .stat-label { font-size: 14px; color: #666; }
+    
+    /* Projects Section */
+    .projects { padding: 120px 40px; max-width: 1400px; margin: 0 auto; }
+    .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: #ff4d4d; margin-bottom: 60px; font-weight: 700; }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 32px; }
+    
+    .project-card { background: linear-gradient(135deg, #141414 0%, #0f0f0f 100%); border: 1px solid #222; border-radius: 16px; padding: 40px; transition: all 0.4s ease; cursor: pointer; position: relative; overflow: hidden; }
+    .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 77, 77, 0.05) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; }
+    .project-card:hover { border-color: #ff4d4d; transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; position: relative; z-index: 1; }
+    .project-card p { font-size: 15px; color: #888; line-height: 1.7; margin-bottom: 24px; position: relative; z-index: 1; }
+    .project-card .arrow { font-size: 28px; color: #ff4d4d; transition: transform 0.3s; position: relative; z-index: 1; }
+    .project-card:hover .arrow { transform: translateX(8px); }
+    
+    /* Services Section */
+    .services { padding: 120px 40px; max-width: 1400px; margin: 0 auto; background: #0d0d0d; margin-left: -40px; margin-right: -40px; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .service-item { padding: 32px 0; border-bottom: 1px solid #222; }
+    .service-item:last-child { border-bottom: none; }
+    .service-number { font-size: 48px; font-weight: 800; color: #222; margin-bottom: 16px; line-height: 1; }
+    .service-item h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .service-item p { font-size: 15px; color: #888; line-height: 1.6; }
+    
+    /* Footer */
+    .footer { padding: 80px 40px; border-top: 1px solid #222; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer span { font-size: 14px; color: #666; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: #666; }
+    .footer-links a:hover { color: #f5f5f5; }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .service-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stats { flex-direction: column; gap: 32px; }
+    }
+    
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #0a0a0a; padding: 24px; flex-direction: column; gap: 16px; }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: flex; }
+      .hero { padding: 140px 24px 80px; }
+      .hero h1 { font-size: clamp(42px, 10vw, 64px); }
+      .projects { padding: 80px 24px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card { padding: 32px; }
+      .services { padding: 80px 24px; margin-left: -24px; margin-right: -24px; }
+      .footer { padding: 40px 24px; flex-direction: column; gap: 24px; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in { animation: fadeInUp 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">naples<span>.agency</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="/WORK/">Work</a>
+      <a href="/SERVICES/">Services</a>
+      <a href="/ABOUT/">About</a>
+      <a href="/CONTACT/">Contact</a>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="fade-in">We build<br><span>systems that</span><br>never sleep.</h1>
+      <p class="fade-in delay-1">Autonomous AI fleets, agent orchestration, and production-ready web experiences. From concept to continuous deployment — we ship systems that scale infinitely.</p>
+      <a href="/CONTACT/" class="hero-cta fade-in delay-2">
+        Start a project →
+      </a>
+      
+      <div class="stats delay-2">
+        <div class="stat">
+          <div class="stat-number">11</div>
+          <div class="stat-label">Autonomous Agents</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Production Uptime</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">0ms</div>
+          <div class="stat-label">Human Latency</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <div class="section-title">Featured Systems</div>
+    <div class="project-grid">
+      <a href="/PROJECTS/city44/" class="project-card fade-in delay-1">
+        <h3>City44</h3>
+        <p>Multi-agent fleet orchestration — 11 Hermes agents running parallel workflows across content, dev, and ops. Self-healing, autonomous, production-ready.</p>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/PROJECTS/nao00/" class="project-card fade-in delay-2">
+        <h3>Nao-00</h3>
+        <p>Autonomous AI agent system — council architecture with voice synthesis, real-time reasoning, and self-improvement loops. No human intervention required.</p>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/PROJECTS/gab44/" class="project-card fade-in delay-3">
+        <h3>Gab44</h3>
+        <p>SEO content platform for spiritual guidance — 1,500+ pages, daily horoscopes, angel number readings. Fully automated content pipeline.</p>
+        <div class="arrow">→</div>
+      </a>
+      <a href="/PROJECTS/adamcareers/" class="project-card fade-in delay-1">
+        <h3>Adam Careers</h3>
+        <p>Career development platform with course management, progress tracking, and student dashboards. Learning infrastructure at scale.</p>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="section-title">What We Build</div>
+    <div class="service-grid">
+      <div class="service-item">
+        <div class="service-number">01</div>
+        <h3>Autonomous Fleets</h3>
+        <p>Multi-agent systems that run 24/7 without human oversight. Self-managing, self-healing, infinitely scalable.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-number">02</div>
+        <h3>Agent Orchestration</h3>
+        <p>Hermes-based agent coordination with real-time communication, task distribution, and result synthesis.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-number">03</div>
+        <h3>Production Systems</h3>
+        <p>Full-stack web experiences with continuous deployment, monitoring, and automated scaling.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 naples.agency — Autonomous systems, built to scale.</span>
+    <div class="footer-links">
+      <a href="/WORK/">Work</a>
+      <a href="/SERVICES/">Services</a>
+      <a href="/CONTACT/">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
